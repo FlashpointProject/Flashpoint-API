@@ -1,0 +1,86 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: Flashpoint Test API 1 (Colin)
+    url: https://api.colinb.club/v1
+  - description: Flashpoint Test API 2 (Obelisk)
+    url: https://api2.colinb.club/v1
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/colin969/Flashpoint/1.0.0
+info:
+  description: Flashpoint API servicing Community Playlists
+  version: "1.0.0"
+  title: Flashpoint API
+  contact:
+    email: flashpoint@bluemaxima.org
+  license:
+    name: MIT License
+    url: 'https://github.com/FlashpointProject/Flashpoint-API/blob/master/LICENSE'
+tags:
+  - name: Playlist
+    description: Calls related to Playlists
+paths:
+  /playlists:
+    get:
+      summary: get all playlists
+      tags:
+        - Playlist
+      operationId: fp_api.models.playlist.get
+      description: Returns an array of playlists
+      responses:
+        '200':
+          description: Found playlist info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Playlist'
+components:
+  schemas:
+    MicroPlaylist:
+      type: object
+      required:
+        - uuid
+        - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        name:
+          type: string
+          example: Hall of Fame
+    Playlist:
+      allOf:
+      - $ref: '#/components/schemas/MicroPlaylist'
+      - properties:
+          author:
+            $ref: '#/components/schemas/MicroUser'
+          games:
+            type: array
+            items:
+              description: list of game uuids this playlist contains
+              type: string
+              format: uuid
+    MicroUser:
+      type: object
+      required:
+        - uuid
+        - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: a2cadae4-88b3-4a16-ab04-81c57565be14
+        name:
+          type: string
+          example: Bob
+    User:
+      allOf:
+      - $ref: '#/components/schemas/MicroUser'
+      - properties:
+          playlists:
+            type: array
+            items:
+              $ref: '#/components/schemas/MicroPlaylist'

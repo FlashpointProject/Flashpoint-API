@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Own Execeptions
-app/config.py
+fp_api/config.py

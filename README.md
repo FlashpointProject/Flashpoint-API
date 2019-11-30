@@ -19,7 +19,7 @@ Change the database URI to the correct form of your postgresql database. Example
 
 ### Running and Maintenance
 
-Run in a development environment with `python3 -m app`
+Run in a development environment with `python3 -m fp_api`
 
 Run in a production environment with gunicorn. Various setups suggested [here.](https://stackoverflow.com/a/35839360)
 
