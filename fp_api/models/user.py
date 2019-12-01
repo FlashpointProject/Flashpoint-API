@@ -1,9 +1,10 @@
 from fp_api.extensions import db, ma
 from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 class User(db.Model):
   user_id =       db.Column(db.Integer, primary_key=True)
-  uuid =          db.Column(UUID(as_uuid=True), unique=True, nullable=False)
+  uuid =          db.Column(UUID(as_uuid=True), unique=True, nullable=False, default=uuid.uuid4)
   name =          db.Column(db.String(80), nullable=False)
   playlists =     db.relationship('Playlist', backref='author', lazy=True)
 

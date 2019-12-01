@@ -25,7 +25,7 @@ paths:
       summary: get all playlists
       tags:
         - Playlist
-      operationId: fp_api.models.playlist.get
+      operationId: fp_api.models.playlist.get_many
       description: Returns an array of playlists
       responses:
         '200':

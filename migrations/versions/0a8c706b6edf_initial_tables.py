@@ -1,8 +1,8 @@
-"""empty message
+"""Initial Tables
 
-Revision ID: 752497330d79
+Revision ID: 0a8c706b6edf
 Revises: 
-Create Date: 2019-11-30 13:46:25.285751
+Create Date: 2019-12-01 10:01:27.024077
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '752497330d79'
+revision = '0a8c706b6edf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,7 +44,8 @@ def upgrade():
     )
     op.create_table('playlist_games',
     sa.Column('playlist_id', sa.Integer(), nullable=True),
-    sa.Column('game_uuid', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('game_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['game_id'], ['game.game_id'], ),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlist.playlist_id'], )
     )
     # ### end Alembic commands ###
