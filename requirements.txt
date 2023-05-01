@@ -1,4 +1,4 @@
-Flask==1.1.1
+Flask==2.3.2
 Flask_Migrate==2.5.2
 flask_marshmallow==0.10.1
 marshmallow-sqlalchemy==0.18.0
